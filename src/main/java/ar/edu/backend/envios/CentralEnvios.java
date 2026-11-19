@@ -15,8 +15,13 @@ public class CentralEnvios {
     public Map<String, Integer> totalesPorZona() {
         return envios.stream().collect(Collectors.groupingBy(Envio::getZona, Collectors.summingInt(Envio::costo)));
     }
+
+    // Se agrego cantidadEnvios() y conteoPorModalidad() a la salida de panorama()
     public String panorama() {
-        return "Total: " + total() + " | por zona: " + new java.util.TreeMap<>(totalesPorZona())
+        return "Objetos: " + cantidadEnvios()
+                + " | Total: " + total()
+                + " | por modalidad: " + new java.util.TreeMap<>(conteoPorModalidad())
+                + " | por zona: " + new java.util.TreeMap<>(totalesPorZona())
                 + " | hasta 1000 g: " + filtrar(e -> e.getGramos() <= 1000).size();
     }
 

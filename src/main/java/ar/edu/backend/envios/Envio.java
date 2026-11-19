@@ -7,11 +7,11 @@ public class Envio {
     // agrego nuevo parametro
     private final String modalidad;
 
+    // contructor original
+    // Se delega al constructor nuevo this(id, zona, gramos, "NORMAL") para que se ejecuten
+    // todas las validaciones de invariantes (nulidad/espacios en blanco de id y zona, gramos > 0 y <= 30000).
     public Envio(String id, String zona, int gramos) {
-        this.id = id.strip();
-        this.zona = zona.strip();
-        this.gramos = gramos;
-        this.modalidad = "NORMAL";
+        this(id, zona, gramos, "NORMAL");
     }
 
     public Envio(String id, String zona, int gramos, String modalidad) {
